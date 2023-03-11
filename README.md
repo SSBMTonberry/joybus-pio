@@ -2,7 +2,7 @@
 GameCube/Nintendo 64 comms library using the RP2040's PIO
 
 ## Changes done in this fork
-- Created a proper `CMakeLists` structure with `joybus_pio` as a standalone library. Build any project inside `examples` to include it.
+- Created a proper `CMakeLists` structure with `joybus_pio` as a standalone library. Build any project inside `examples` to include it. (Issue: [#1](https://github.com/SSBMTonberry/joybus-pio/issues/1), PR: [#2](https://github.com/SSBMTonberry/joybus-pio/pull/2))
 
 ## Usage
 
