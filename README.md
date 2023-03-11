@@ -1,6 +1,9 @@
 # joybus-pio
 GameCube/Nintendo 64 comms library using the RP2040's PIO
 
+## Changes done in this fork
+- Created a proper `CMakeLists` structure with `joybus_pio` as a standalone library. Build any project inside `examples` to include it.
+
 ## Usage
 
 This library is designed and tested to work with system clock set to 130MHz for the PIO clock divider to be correct.
