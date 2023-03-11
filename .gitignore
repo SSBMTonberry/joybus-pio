@@ -3,3 +3,6 @@
 .cache/
 build/
 config_autogen.h
+
+.idea/
+cmake-build*/
