@@ -9,11 +9,15 @@
 #include <pico/time.h>
 
 GamecubeConsole::GamecubeConsole(uint pin, PIO pio, int sm, int offset) {
-    joybus_port_init(&_port, pin, pio, sm, offset);
+    Initialize(pin, pio, sm, offset);
 }
 
 GamecubeConsole::~GamecubeConsole() {
     joybus_port_terminate(&_port);
+}
+
+uint GamecubeConsole::Initialize(uint pin, PIO pio, int sm, int offset) {
+    return joybus_port_init(&_port, pin, pio, sm, offset);
 }
 
 bool __no_inline_not_in_flash_func(GamecubeConsole::Detect)() {

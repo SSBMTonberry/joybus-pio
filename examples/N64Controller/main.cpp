@@ -7,7 +7,7 @@
 
 void print_bytes(const char *prefix, uint8_t *bytes, uint len);
 
-N64Controller *controller;
+N64Controller controller;
 
 int main(void) {
     set_sys_clock_khz(130'000, true);
@@ -16,7 +16,7 @@ int main(void) {
 
     uint joybus_pin = 1;
 
-    controller = new N64Controller(joybus_pin, 120, pio0);
+    controller.Initialize(joybus_pin, 120, pio0);
     n64_report_t report = default_n64_report;
 
     // Set up LED
@@ -25,7 +25,7 @@ int main(void) {
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
 
     while (true) {
-        controller->Poll(&report, 0);
+        controller.Poll(&report, 0);
 
         printf("A: %d\n", report.a);
         printf("B: %d\n", report.b);

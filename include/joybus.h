@@ -1,8 +1,12 @@
 #ifndef _JOYBUS_JOYBUS_H
 #define _JOYBUS_JOYBUS_H
 
+#if USE_FAKE_PICO
+#include "fake-pico.hpp"
+#else
 #include <hardware/pio.h>
 #include <pico/stdlib.h>
+#endif
 
 /**
  * @brief A structure representing a Joybus instance on a given GPIO pin

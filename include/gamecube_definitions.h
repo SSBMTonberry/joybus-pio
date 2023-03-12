@@ -1,7 +1,11 @@
 #ifndef _JOYBUS_GAMECUBE_DEFINITIONS_H
 #define _JOYBUS_GAMECUBE_DEFINITIONS_H
 
+#if USE_FAKE_PICO
+#include "fake-pico.hpp"
+#else
 #include <pico/stdlib.h>
+#endif
 
 enum class GamecubeCommand {
     PROBE = 0x00,

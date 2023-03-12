@@ -2,6 +2,10 @@
 GameCube/Nintendo 64 comms library using the RP2040's PIO
 
 ## Changes done in this fork
+- Added the `fake-pico.hpp` library to fake Pico headers for non-`ARM` compilers. Integrated it into all `header` files of `joybus-pio`. (PR: [#4](https://github.com/SSBMTonberry/joybus-pio/pull/4))
+- Added a `Catch2` test project using `GCC` (not `ARM`) (PR: [#4](https://github.com/SSBMTonberry/joybus-pio/pull/4))
+- Added a default constructor and `Initialize()` function for `GamecubeConsole`, `GamecubeController`, `N64Console` and `N64Controller`. (PR: [#4](https://github.com/SSBMTonberry/joybus-pio/pull/4))
+- Updated all examples to use default constructors and `Initialize()`. (PR: [#4](https://github.com/SSBMTonberry/joybus-pio/pull/4))
 - Created a proper `CMakeLists` structure with `joybus_pio` as a standalone library. Build any project inside `examples` to include it. (Issue: [#1](https://github.com/SSBMTonberry/joybus-pio/issues/1), PR: [#2](https://github.com/SSBMTonberry/joybus-pio/pull/2))
 
 ## Usage
