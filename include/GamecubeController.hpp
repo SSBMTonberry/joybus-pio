@@ -4,8 +4,12 @@
 #include "gamecube_definitions.h"
 #include "joybus.h"
 
+#if USE_FAKE_PICO
+#include "fake-pico.hpp"
+#else
 #include <hardware/pio.h>
 #include <pico/stdlib.h>
+#endif
 
 class GamecubeController {
   public:

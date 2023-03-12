@@ -8,7 +8,10 @@ project(joybus_pio_project CXX C ASM)
 
 pico_sdk_init()
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/libs)
 
 add_subdirectory(src)
 add_subdirectory(examples)
+
+# Requires Linux and GCC for now.
+add_subdirectory(tests)

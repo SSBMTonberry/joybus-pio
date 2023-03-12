@@ -4,8 +4,12 @@
 #include "joybus.h"
 #include "n64_definitions.h"
 
+#if USE_FAKE_PICO
+#include "fake-pico.hpp"
+#else
 #include <hardware/pio.h>
 #include <pico/stdlib.h>
+#endif
 
 class N64Controller {
   public:

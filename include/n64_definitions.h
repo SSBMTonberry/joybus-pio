@@ -1,7 +1,11 @@
 #ifndef _JOYBUS_N64_DEFINITIONS_H
 #define _JOYBUS_N64_DEFINITIONS_H
 
+#if USE_FAKE_PICO
+#include "fake-pico.hpp"
+#else
 #include <pico/stdlib.h>
+#endif
 
 enum class N64Command {
     PROBE = 0x00,
