@@ -7,7 +7,7 @@
 
 void print_bytes(const char *prefix, uint8_t *bytes, uint len);
 
-GamecubeController *gcc;
+GamecubeController gcc;
 
 int main(void) {
     set_sys_clock_khz(130'000, true);
@@ -16,7 +16,7 @@ int main(void) {
 
     uint joybus_pin = 1;
 
-    gcc = new GamecubeController(joybus_pin, 120, pio0);
+    gcc.Initialize(joybus_pin, 120, pio0);
     gc_report_t report = default_gc_report;
 
     // Set up LED
@@ -25,7 +25,7 @@ int main(void) {
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
 
     while (true) {
-        gcc->Poll(&report, 0);
+        gcc.Poll(&report, 0);
 
         printf("A: %d\n", report.a);
         printf("B: %d\n", report.b);

@@ -13,6 +13,12 @@
 
 class N64Controller {
   public:
+
+    /**
+     * @brief Default-constructor for a N64Controller object. Must call Initialize() afterwards.
+     */
+    N64Controller() = default;
+
     /**
      * @brief Construct a new N64Controller object
      *
@@ -31,6 +37,19 @@ class N64Controller {
      * the joybus program from the PIO instance
      */
     ~N64Controller();
+
+    /**
+     * @brief Initialize N64Controller object. Only needed when default constructor is used to create the object.
+     *
+     * @param pin The GPIO pin that the N64 controller's data line is connected to
+     * @param polling_rate The frequency (in Hz) at which to poll the controller
+     * @param pio The PIO instance; either pio0 or pio1. Default is pio0.
+     * @param sm The PIO state machine to run the joybus instance on. Default is to automatically
+     * claim an unused one.
+     * @param offset The instruction memory offset at which to load the PIO program. Default is to
+     * allocate automatically.
+     */
+    uint Initialize(uint pin, uint polling_rate, PIO pio = pio0, int sm = -1, int offset = -1);
 
     /**
      * @brief Send a poll to the N64 controller. Delay will be added if necessary to conform

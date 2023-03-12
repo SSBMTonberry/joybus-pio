@@ -6,13 +6,18 @@
 #include <pico/time.h>
 
 N64Controller::N64Controller(uint pin, uint polling_rate, PIO pio, int sm, int offset) {
-    joybus_port_init(&_port, pin, pio, sm, offset);
-    _polling_period_us = 1'000'000 / polling_rate;
-    _next_poll = get_absolute_time();
+    Initialize(pin, polling_rate, pio, sm, offset);
 }
 
 N64Controller::~N64Controller() {
     joybus_port_terminate(&_port);
+}
+
+uint N64Controller::Initialize(uint pin, uint polling_rate, PIO pio, int sm, int offset) {
+    uint result = joybus_port_init(&_port, pin, pio, sm, offset);
+    _polling_period_us = 1'000'000 / polling_rate;
+    _next_poll = get_absolute_time();
+    return result;
 }
 
 void __no_inline_not_in_flash_func(N64Controller::_wait_poll_cooldown)() {

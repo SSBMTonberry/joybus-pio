@@ -19,6 +19,12 @@ enum class PollStatus {
 
 class GamecubeConsole {
   public:
+
+    /**
+     * @brief Default-constructor for a GamecubeConsole object. Must call Initialize() afterwards.
+     */
+    GamecubeConsole() = default;
+
     /**
      * @brief Construct a new GamecubeConsole object
      *
@@ -36,6 +42,18 @@ class GamecubeConsole {
      * the joybus program from the PIO instance
      */
     ~GamecubeConsole();
+
+    /**
+     * @brief Initialize GamecubeConsole object. Only needed when default constructor is used to create the object.
+     *
+     * @param pin The GPIO pin that the GameCube console's data line is connected to
+     * @param pio The PIO instance; either pio0 or pio1. Default is pio0.
+     * @param sm The PIO state machine to run the joybus instance on. Default is to automatically
+     * claim an unused one.
+     * @param offset The instruction memory offset at which to load the PIO program. Default is to
+     * allocate automatically.
+     */
+    uint Initialize(uint pin, PIO pio = pio0, int sm = -1, int offset = -1);
 
     /**
      * @brief Detect if a GameCube console is connected to the joybus port

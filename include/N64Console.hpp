@@ -13,6 +13,12 @@
 
 class N64Console {
   public:
+
+    /**
+     * @brief Default-constructor for a N64Console object. Must call Initialize() afterwards.
+     */
+    N64Console() = default;
+
     /**
      * @brief Construct a new N64Console object
      *
@@ -30,6 +36,18 @@ class N64Console {
      * the joybus program from the PIO instance
      */
     ~N64Console();
+
+    /**
+     * @brief Initialize N64Console object. Only needed when default constructor is used to create the object.
+     *
+     * @param pin The GPIO pin that the N64 console's data line is connected to
+     * @param pio The PIO instance; either pio0 or pio1. Default is pio0.
+     * @param sm The PIO state machine to run the joybus instance on. Default is to automatically
+     * claim an unused one.
+     * @param offset The instruction memory offset at which to load the PIO program. Default is to
+     * allocate automatically.
+     */
+    uint Initialize(uint pin, PIO pio = pio0, int sm = -1, int offset = -1);
 
     /**
      * @brief Detect if an N64 console is connected to the joybus port

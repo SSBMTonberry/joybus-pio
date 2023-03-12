@@ -9,11 +9,15 @@
 #include <pico/time.h>
 
 N64Console::N64Console(uint pin, PIO pio, int sm, int offset) {
-    joybus_port_init(&_port, pin, pio, sm, offset);
+    Initialize(pin, pio, sm, offset);
 }
 
 N64Console::~N64Console() {
     joybus_port_terminate(&_port);
+}
+
+uint N64Console::Initialize(uint pin, PIO pio, int sm, int offset) {
+    return joybus_port_init(&_port, pin, pio, sm, offset);
 }
 
 bool __no_inline_not_in_flash_func(N64Console::Detect)() {
